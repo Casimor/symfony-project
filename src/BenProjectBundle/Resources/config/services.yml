@@ -1,0 +1,7 @@
+services:
+#    ben_project.example:
+#        class: BenProjectBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    BenProjectBundle\Controller\UserController:
+        autowire: true # or define your controller constructor and configure its arguments explicitly
+        tags: ['controller.service_arguments']

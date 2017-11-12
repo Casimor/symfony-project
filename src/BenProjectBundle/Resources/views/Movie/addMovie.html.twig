@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h1>Ajouter un film</h1>
+	</div>
+	<div class="panel-body">
+		{{ form_start(form) }}
+		    {{ form_row(form.title) }}
+		    {{ form_row(form.release_date) }}
+		    {{ form_row(form.synopsis) }}
+		    {{ form_row(form.director) }}
+		
+		    <button type="submit">Enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}

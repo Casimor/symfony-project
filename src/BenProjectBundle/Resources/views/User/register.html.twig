@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h1>S'enregistrer</h1>
+	</div>
+	<div class="panel-body">
+		{{ form_start(form) }}
+		    {{ form_row(form.username) }}
+		    {{ form_row(form.email) }}
+		    {{ form_row(form.plainPassword.first) }}
+		    {{ form_row(form.plainPassword.second) }}
+
+		    <button type="submit">S'enregistrer</button>
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}

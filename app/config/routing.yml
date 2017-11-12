@@ -1,0 +1,3 @@
+ben_project:
+    resource: "@BenProjectBundle/Resources/config/routing.yml"
+    prefix:   /

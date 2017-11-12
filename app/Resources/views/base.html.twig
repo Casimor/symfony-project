@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                <a href="{{ logout_path() }}" class="btn btn-danger">Se déconnecter</a>
+                <a href="{{ path('home') }}" class="btn btn-danger">Page d'acceuil</a>
+                <a href="{{ path('add_movie') }}" class="btn btn-danger">Ajouter un film</a>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('users_view') }}" class="btn btn-danger">Utilisateurs</a>
+                {% endif %}
+            {% else %}
+                <a href="{{ path('user_registration') }}" class="btn btn-danger">S'enregistrer</a>
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

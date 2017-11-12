@@ -1,0 +1,65 @@
+ben_project_homepage:
+    path:     /admin
+    defaults: { _controller: BenProjectBundle:Default:admin }
+
+user_registration:
+    path:     /register
+    defaults: { _controller: BenProjectBundle:User:register }
+
+create_user:
+    path:     /admin/create
+    defaults: { _controller: BenProjectBundle:User:create }
+
+add_movie:
+    path:     /add
+    defaults: { _controller: BenProjectBundle:Movie:add }
+
+login:
+    path:     /login
+    defaults: { _controller: BenProjectBundle:Login:login }
+
+logout:
+    path:     /logout
+    defaults: { _controller: BenProjectBundle:Login:login }
+
+movie_view:
+    path:      /movie/{id}
+    defaults: { _controller: BenProjectBundle:Movie:viewMovie }
+    requirements:
+        id: \d+
+
+movies_view:
+    path:     /movie
+    defaults: { _controller: BenProjectBundle:Movie:view }
+
+home:
+    path:     /
+    defaults: { _controller: BenProjectBundle:Movie:view }
+
+modify_movie:
+    path:      /movie/modify/{id}
+    defaults: { _controller: BenProjectBundle:Movie:modifyMovie }
+    requirements:
+        id: \d+
+
+delete_movie:
+    path:     /movie/delete/{id}
+    defaults: { _controller: BenProjectBundle:Movie:deleteMovie }
+    requirements:
+        id: \d+
+
+modify_user:
+    path:      /admin/user/modify/{id}
+    defaults: { _controller: BenProjectBundle:User:modifyUser }
+    requirements:
+        id: \d+
+
+users_view:
+    path:     /admin/user
+    defaults: { _controller: BenProjectBundle:User:view }
+
+delete_user:
+    path:     /admin/user/delete/{id}
+    defaults: { _controller: BenProjectBundle:User:deleteUser }
+    requirements:
+        id: \d+

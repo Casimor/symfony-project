@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h1> Films </h1>
+	</div>
+	<div class="panel-body">
+		<table class="table">
+			<tr>
+  			  <th>Titre</th>
+  			  <th>Créateur</th>
+  			</tr>
+			{% for movie in listMovies %}
+    			<tr>
+    				<td> <a href="{{ path('movie_view', {'id': movie.id}) }}">{{ movie.title }}</a> </td>
+    				<td> {{ movie.username }} </td>
+  				</tr>
+  			{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
