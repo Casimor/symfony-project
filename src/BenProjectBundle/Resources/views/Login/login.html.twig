@@ -8,7 +8,7 @@
 	<div class="panel-body">
 		{% if errors %}
     		<div>
-    			{{ error.messageKey|trans(error.messageData, 'security') }}
+    			{{ errors.messageKey|trans(errors.messageData, 'security') }}
     		</div>
 		{% endif %}
 		<form action="{{ path('login') }}" method="post">

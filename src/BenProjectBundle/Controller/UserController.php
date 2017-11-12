@@ -37,9 +37,6 @@ class UserController extends Controller
         );
     }
 
-    /**
-     * @Route("/register", name="user_registration")
-     */
     public function createAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();

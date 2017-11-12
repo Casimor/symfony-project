@@ -5,12 +5,12 @@ namespace BenProjectBundle\Command;
 
 use BenProjectBundle\Entity\User;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use BenProjectBundle\Service\CreateUser;
 
 class CreateUserCommand extends ContainerAwareCommand
 {
@@ -33,10 +33,18 @@ class CreateUserCommand extends ContainerAwareCommand
 		$email = $input->getArgument('email');
 		$passwordPlainText = $input->getArgument('password');
 		$role = $input->getArgument('role');
-
-		$userManager = $this->getContainer()->get('app.user');
-        $userManager->create($input->getArgument('username'));
-
         $output->writeln('User successfully generated!');
+
+        $user = new User();
+        $user->setUsername($username); 
+        $user->setEmail($email);
+        $user->setPassword(password_hash($passwordPlainText, PASSWORD_BCRYPT));
+        if ($role == "admin")
+        	$user->setRoles(array('ROLE_ADMIN'));
+        else
+        	$user->setRoles(array('ROLE_USER')); 
+        $em = $this->getContainer()->get('doctrine')->getManager();
+        $em->persist($user);
+        $em->flush();
 	}
 }
